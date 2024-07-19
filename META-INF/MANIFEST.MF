@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BCM
+Bundle-SymbolicName: id.sisi.forca.bcm;singleton:=true
+Bundle-Version: 11.0.0.qualifier
+Import-Package: javax.servlet;version="4.0.0",
+ javax.servlet.annotation;version="4.0.0",
+ javax.servlet.descriptor;version="4.0.0",
+ javax.servlet.http;version="4.0.0"
+Require-Bundle: org.adempiere.base;bundle-version="0.0.0"
+Automatic-Module-Name: id.sisi.forca.bcm
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Web-ContextPath: bcm
