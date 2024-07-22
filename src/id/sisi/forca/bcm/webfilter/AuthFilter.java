@@ -34,10 +34,11 @@ public class AuthFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		log.severe("Auth Filter ...");
-
+		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
+		
 
 		if (session != null && session.getAttribute(WebUser.NAME) != null) {
 			res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");

@@ -33,12 +33,14 @@ public class JSPEnv {
 	public static String INDEX = "/bcm";
 	
 	private static final int AD_CLIENT_ID = 11;
+	private static final int AD_ORG_ID = 0;
 	
 	public static final String WebSessionCtx = "WebSessionCtx";
 
 	private static Properties getDefault() {
 		Properties ctx = new Properties();
 		Env.setContext(ctx, Env.AD_CLIENT_ID, AD_CLIENT_ID);
+		Env.setContext(ctx, Env.AD_ORG_ID, AD_ORG_ID);
 
 		Language lang = Language.getBaseLanguage();
 		Env.setContext(ctx, Env.LANGUAGE, lang.getAD_Language());
