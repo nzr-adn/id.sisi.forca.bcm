@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import id.sisi.forca.bcm.JSPEnv;
 
-@WebServlet(urlPatterns = "/public")
-public class PublicServlet extends HttpServlet {
+@WebServlet("/register")
+public class RegisterServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3049235024658254404L;
+	private static final long serialVersionUID = 1289148444877407548L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "public.jsp").forward(req, resp);
+	protected void doHead(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "register.jsp").forward(req, resp);
 	}
 
 }

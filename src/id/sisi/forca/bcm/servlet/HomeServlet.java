@@ -1,6 +1,8 @@
 package id.sisi.forca.bcm.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.compiere.util.CLogger;
+import org.compiere.util.Env;
 
-import id.sisi.forca.bcm.WebEnv;
+import id.sisi.forca.bcm.JSPEnv;
 
 @WebServlet(urlPatterns = "/home")
 public class HomeServlet extends HttpServlet {
@@ -30,13 +33,7 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.severe("Get Handler ...");
-		req.getRequestDispatcher(WebEnv.JSP_DIRECTORY + "home.jsp").forward(req, resp);
-	}
-
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		log.severe("Service Handler ...");
-		super.service(req, resp);
+		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "home.jsp").forward(req, resp);
 	}
 
 }

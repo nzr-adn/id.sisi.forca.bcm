@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.compiere.util.CLogger;
+import org.compiere.util.WebUser;
 
 @WebFilter(urlPatterns = { "/home", "/profile", "/dashboard" })
 public class AuthFilter implements Filter {
 
 	private CLogger log = CLogger.getCLogger(AuthFilter.class);
 	private ServletContext context;
+
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -37,7 +39,7 @@ public class AuthFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 
-		if (session != null && session.getAttribute("AD_User_ID") != null) {
+		if (session != null && session.getAttribute(WebUser.NAME) != null) {
 			res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             res.setHeader("Pragma", "no-cache");
             res.setDateHeader("Expires", 0);

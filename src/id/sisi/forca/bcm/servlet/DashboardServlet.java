@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import id.sisi.forca.bcm.WebEnv;
+import id.sisi.forca.bcm.JSPEnv;
 
 
 @WebServlet(urlPatterns = "/dashboard")
@@ -19,7 +19,7 @@ public class DashboardServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(WebEnv.JSP_DIRECTORY + "dashboard.html").forward(req, resp);
+		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "dashboard.html").forward(req, resp);
 	}
 
 }

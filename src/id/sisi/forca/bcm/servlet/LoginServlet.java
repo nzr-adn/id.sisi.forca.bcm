@@ -1,6 +1,7 @@
 package id.sisi.forca.bcm.servlet;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import id.sisi.forca.bcm.WebEnv;
+import org.adempiere.util.ServerContext;
+import org.compiere.util.Env;
+import org.compiere.util.WebUser;
+
+import id.sisi.forca.bcm.JSPEnv;
 import id.sisi.forca.bcm.WebUtil;
 
 @WebServlet(urlPatterns = "/login")
@@ -27,7 +32,8 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(WebEnv.JSP_DIRECTORY + "login.jsp").forward(req, resp);
+
+		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "login.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -42,10 +48,14 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private boolean isLogin(HttpServletRequest req, String email, String password) {
+		Properties ctx = JSPEnv.getCtx(req);
+		WebUser w_user = WebUser.get(ctx, email, password, false);
 		HttpSession session;
-		if (email.equals("nizar.adian.n@gmail.com") && password.equals("123456789")) {
-			session = req.getSession(true);
-			session.setAttribute("AD_User_ID", email);
+		if (w_user != null && w_user.isPasswordOK()) {
+			session = req.getSession();
+			session.setAttribute(WebUser.NAME, w_user);
+			Env.setContext(ctx, Env.AD_USER_ID, w_user.getAD_User_ID());
+			Env.setContext(ctx, Env.AD_CLIENT_ID, w_user.getAD_Client_ID());
 			return true;
 		}
 		return false;
