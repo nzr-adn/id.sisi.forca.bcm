@@ -54,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 			session = req.getSession();
 			session.setAttribute(WebUser.NAME, w_user);
 			Env.setContext(ctx, Env.AD_USER_ID, w_user.getAD_User_ID());
-			Env.setContext(ctx, Env.AD_CLIENT_ID, w_user.getAD_Client_ID());
 			return true;
 		}
 		return false;
