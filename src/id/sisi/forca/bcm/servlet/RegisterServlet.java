@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1289148444877407548L;
 
 	@Override
-	protected void doHead(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "register.jsp").forward(req, resp);
 	}
 
