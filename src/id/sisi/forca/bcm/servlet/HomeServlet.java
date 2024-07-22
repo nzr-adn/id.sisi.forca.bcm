@@ -32,7 +32,7 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.severe("Get Handler ...");
 		MTest test = new MTest(JSPEnv.getCtx(req), 0, null);
-//		test.setName("Test From JSP Servlet");
+		test.setName("Test From JSP Servlet");
 		test.setDescription("Test 1");
 		test.saveEx();
 		req.getRequestDispatcher(JSPEnv.JSP_DIRECTORY + "home.jsp").forward(req, resp);
